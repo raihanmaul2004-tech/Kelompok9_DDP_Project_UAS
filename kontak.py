@@ -20,7 +20,7 @@ def kontak_page():
         {
             "nama": "Putri Ramadhani Silitonga",
             "nim" : "0110125007",
-            "ig": "https://instagram.com/username3",
+            "ig": "https://www.instagram.com/_putrisltg?igsh=bWFtZ2szeHduNjc3",
             "wa": "https://wa.me/6285261497438"
         },
         {
