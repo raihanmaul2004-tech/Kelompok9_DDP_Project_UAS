@@ -26,7 +26,7 @@ def kontak_page():
         {
             "nama": "Ayu Dia Isnani Arun Nisa",
             "nim" : "0110125007",
-            "ig": "https://instagram.com/username4",
+            "ig": "https://www.instagram.com/marchochoo_?igsh=MXkwbnJ3ZmQ3a3RzYQ==",
             "wa": "https://wa.me/6285714715122"
         },
     ]
@@ -58,11 +58,11 @@ def kontak_page():
             unsafe_allow_html=True
         )
 
-    # --- Barisan kedua: 3 card ---
+
     col1, col2, col3 = st.columns(3)
     cols = [col1, col2, col3]
 
-    for idx, a in enumerate(anggota[1:]):  # ambil anggota ke-2 sampai ke-4
+    for idx, a in enumerate(anggota[1:]): 
         with cols[idx]:
             st.markdown(
                 f"""
