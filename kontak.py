@@ -14,7 +14,7 @@ def kontak_page():
         {
             "nama": "Muhammad Zidni Fadhilah",
             "nim" : "0110125007",
-            "ig": "https://instagram.com/username2",
+            "ig": "https://www.instagram.com/zidni_fadh?igsh=MWNlazczZWVxZHMxaQ==",
             "wa": "https://wa.me/6281808296075"
         },
         {

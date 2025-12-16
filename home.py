@@ -7,7 +7,7 @@ def home_page():
     st.write("Beranda utama tempat semua rencana dan keuangan kamu bersatu. Santai dulu, tapi tetap produktif.")
     st.markdown("### Progres aktivitas 💪😘 ")
 
-    # --- Ringkasan Aktivitas ---
+
     data = load_data()
     selesai = sum(1 for r in data if len(r) > 2 and r[2] == "Selesai")
     ongoing = sum(1 for r in data if len(r) > 2 and r[2] == "Ongoing")
@@ -25,12 +25,11 @@ def home_page():
     if total > 0:
         st.progress(selesai/total)
 
-    # --- Ringkasan Keuangan ---
     keuangan = load_keuangan()
     if keuangan:
         pemasukan = sum(int(r[1]) for r in keuangan if r[1].isdigit())
         pengeluaran = sum(int(r[2]) for r in keuangan if r[2].isdigit())
-        saldo = int(keuangan[-1][3])  # saldo terakhir
+        saldo = int(keuangan[-1][3])
 
         st.markdown("### Ringkasan Keuangan 💰 ")
         col4, col5, col6 = st.columns(3)
