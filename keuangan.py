@@ -48,3 +48,13 @@ def keuangan_page():
             data = list(reader)
             st.write("### 📋 Hasil Keuangan")
             st.table(data)
+
+            f.seek(0)
+            
+            csv_content = f.read()
+            st.download_button(
+                label="⬇️ Download CSV",
+                data=csv_content,
+                file_name=filename,
+                mime="text/csv"
+            )
