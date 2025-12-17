@@ -26,7 +26,7 @@ def rekap_page():
         selesai_count = 0
         ongoing_count = 0
         belum_count = 0
-
+    
         for row in data:
             if row:
                 if len(row) == 2:
@@ -44,12 +44,11 @@ def rekap_page():
         st.markdown(
             f"""
             <div style="
-                background-color:;
                 padding:15px;
                 margin-bottom:20px;
                 border-radius:8px;
                 border:1px solid #f5f5f5;">
-                <h4 style="color:; margin:0; font-weight:bold;">Ringkasan Status</h4>
+                <h4 style="margin:0; font-weight:bold;">Ringkasan Status</h4>
                 <p style="color:rgb(46, 125, 50); font-weight:bold;">✅ Selesai: {selesai_count}</p>
                 <p style="color:rgb(204, 153, 0); font-weight:bold;">🔄 Ongoing: {ongoing_count}</p>
                 <p style="color:rgb(198, 40, 40); font-weight:bold;">⏳ Belum Dimulai: {belum_count}</p>
@@ -60,6 +59,8 @@ def rekap_page():
 
         st.subheader("Ayo wujudkan Rencana Anda 💪😘")
         updated = False
+        deleted = False
+
         for i, row in enumerate(data):
             if row:
                 if len(row) == 2:
@@ -88,10 +89,9 @@ def rekap_page():
                     text_color = "rgb(255, 255, 200)"
                     text_shadow = "1px 1px 2px #000"
                 else:
-                    bg_color = " rgb(198, 40, 40)"   
+                    bg_color = "rgb(198, 40, 40)"   
                     text_color = "rgb(255, 200, 200)"
                     text_shadow = "1px 1px 2px #000"            
-
 
                 st.markdown(
                     f"""
@@ -109,8 +109,15 @@ def rekap_page():
                     unsafe_allow_html=True
                 )
 
-    if updated:
-        save_data(data)
-        st.success("Status berhasil diperbarui!")
+                if st.button(f"Hapus '{rencana}'", key=f"delete_{i}"):
+                    data.pop(i)
+                    save_data(data)
+                    st.warning(f"Rencana '{rencana}' berhasil dihapus!")
+                    deleted = True
+                    st.rerun() 
+
+        if updated and not deleted:
+            save_data(data)
+            st.success("Status berhasil diperbarui!")
     else:
         st.info("Belum ada tujuan yang tersimpan.")
